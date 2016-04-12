@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neighborhood Map Project</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/app.js"></script>
+</head>
+<body>
+	<!--Navivation slider -->
+	<div id="mySidenav" class="sidenav">
+	  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+	  <h2>My Favorite Places</h2>
+
+  	<div class="box">
+	  <div class="container-1">
+	      <span class="icon"><i class="fa fa-search"></i></span>
+	      <input type="search" id="search" placeholder="Search..." />
+	  </div>
+	</div>
+		
+	</div>
+	<span style="font-size:30px;cursor:pointer" onclick="openNav()">☰ open</span>
+
+	<div id="map"></div>
+	<!--inline this small code-->
+	<script>
+		function openNav() {document.getElementById("mySidenav").style.width = "275px";}
+		function closeNav() {document.getElementById("mySidenav").style.width = "0";}
+		
+		var map;
+	    function initMap() {
+	    	var myLatLng = {lat: -25.363, lng: 131.044};
+	        map = new google.maps.Map(document.getElementById('map'), {
+	          center: myLatLng,
+	          zoom: 8
+	        });
+
+			var contentString = '<div id="content">'+
+			  '<div id="siteNotice">'+
+			  '</div>'+
+			  '<h1 id="firstHeading" class="firstHeading">Uluru</h1>'+
+			  '<div id="bodyContent">'+
+			  '<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large ' +
+			  'sandstone rock formation in the southern part of the '+
+			  'Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) '+
+			  'south west of the nearest large town, Alice Springs; 450&#160;km '+
+			  '(280&#160;mi) by road. Kata Tjuta and Uluru are the two major '+
+			  'features of the Uluru - Kata Tjuta National Park. Uluru is '+
+			  'sacred to the Pitjantjatjara and Yankunytjatjara, the '+
+			  'Aboriginal people of the area. It has many springs, waterholes, '+
+			  'rock caves and ancient paintings. Uluru is listed as a World '+
+			  'Heritage Site.</p>'+
+			  '</div>'+
+			  '</div>';
+
+			var infowindow = new google.maps.InfoWindow({
+				content: contentString,
+				maxWidth: 200
+			});
+
+	        // Create a marker and set its position.
+			var marker = new google.maps.Marker({
+				map: map,
+			    position: myLatLng,
+			    //title: 'Hello World!'
+			});
+
+			marker.addListener('click', function() {
+			    infowindow.open(map, marker);
+			});
+			/*
+			function drop() {
+			  for (var i =0; i < markerArray.length; i++) {
+			    setTimeout(function() {
+			      addMarkerMethod();
+			    }, i * 200);
+			  }
+			}*/
+	    }
+	</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-debug.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCq0E_YjDqMAaFaaLZ67OEIAvadmWaPKa8&callback=initMap" async defer></script>
+</body>
+</html>
+
