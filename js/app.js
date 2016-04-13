@@ -55,27 +55,27 @@ function initMap() {
     var infowindow = new google.maps.InfoWindow();
 
     for (var i = 0; i < places.length; i++) {
+        setTimeout(function(i) {
+          var newMarker = new google.maps.Marker({
+              position: new google.maps.LatLng(places[i].position),
+              map: map,
+              title: places[i].name,
+              animation: google.maps.Animation.DROP
+          });
 
-        var newMarker = new google.maps.Marker({
-            position: new google.maps.LatLng(places[i].position),
-            map: map,
-            title: places[i].name,
-            animation: google.maps.Animation.DROP
-        });
+          google.maps.event.addListener(newMarker, 'click', (function (newMarker, i) {
+              return function () {
+                  infowindow.setContent(places[i].name);
+                  infowindow.open(map, newMarker);
+                  //Bounce the marker
+                  newMarker.setAnimation(google.maps.Animation.BOUNCE);
+                  //Then set a timer to stop the marker bouncing after 1450ms (2 bounces)
+                  setTimeout(function(){newMarker.setAnimation(null);}, 1450)
+              }
+          })(newMarker, i));
 
-        google.maps.event.addListener(newMarker, 'click', (function (newMarker, i) {
-            return function () {
-                infowindow.setContent(places[i].name);
-                infowindow.open(map, newMarker);
-            }
-        })(newMarker, i));
-
-        markers.push(newMarker);
+          markers.push(newMarker);
+        //200ms interval for each marker created
+        }, i * 200, i);
     }
 }
-
-
-
-
-
-
