@@ -6,35 +6,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Neighborhood Map Project</title>
     <link rel="stylesheet" href="css/style.css">
-    <script src="js/app.js"></script>
 </head>
 <body>
 	<!--Navivation slider -->
 	<div id="mySidenav" class="sidenav">
-	  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-	  <h2>My Favorite Places</h2>
-
-  	<div class="box">
-	  <div class="container-1">
-	      <span class="icon"><i class="fa fa-search"></i></span>
-	      <input type="search" id="search" placeholder="Search..." />
-	  </div>
+	  	<div class="box">
+		  <div class="container-1">
+		  	  <h3>List of places</h3>
+		      <span class="icon"><i class="fa fa-search"></i></span>
+		      <input type="search" id="search" placeholder="Search..." data-bind="value: filterText, valueUpdate: 'afterkeydown'"/>
+		  </div>
+		</div>
+		<!--List of places-->
+		<ul class="place-list" data-bind="foreach: filteredPlaces">
+			<li data-bind="text: name"></li>
+		</ul>
 	</div>
-		
-	</div>
-	<span style="font-size:30px;cursor:pointer" onclick="openNav()">☰ open</span>
 
-	<div id="map"></div>
-	<!--inline this small code-->
+	<div id="main">
+		<span style="font-size:30px;cursor:pointer" onclick="openNav()">☰</span>
+		<div id="map"></div>
+	</div>
+	
+	<!--inlined the nav slider code-->
 	<script>
-		function openNav() {document.getElementById("mySidenav").style.width = "275px";}
-		function closeNav() {document.getElementById("mySidenav").style.width = "0";}
-		
+	var nav = true;
+		function openNav() {
+			if(nav){
+				document.getElementById("mySidenav").style.width = "275px";
+				document.getElementById("main").style.marginLeft = "275px";
+				nav = false;
+			}else{
+				document.getElementById("mySidenav").style.width = "0";
+		    	document.getElementById("main").style.marginLeft= "0";
+		    	nav = true;
+			}
+		}
 	</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-debug.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
     <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCq0E_YjDqMAaFaaLZ67OEIAvadmWaPKa8&callback=initMap" async defer></script>
+    <script src="js/app.js"></script>
 </body>
 </html>
 
