@@ -99,16 +99,6 @@ input:focus {
     color: #f1f1f1;
 }
 
-/* Position and style the close button (top right corner) */
-.closebtn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px !important;
-    margin-left: 50px;
-}
-
-
 #main {
     transition: margin-left .5s;
     height: 100%

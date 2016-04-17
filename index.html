@@ -14,7 +14,7 @@
 		  <div class="container-1">
 		  	  <h3>List of places</h3>
 		      <span class="icon"><i class="fa fa-search"></i></span>
-		      <input type="search" id="search" placeholder="Search..." data-bind="value: filterText, valueUpdate: 'afterkeydown'"/>
+		      <input type="text" id="search" placeholder="Search..." data-bind="value: filterText, valueUpdate:['afterkeydown','propertychange','input']"/>
 		  </div>
 		</div>
 		<!--List of places-->

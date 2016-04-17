@@ -23,7 +23,6 @@ var initialPlaces = [
     position: {lat: 51.514274, lng: -0.098992}
   }
 ];
-//FIX the little x on the search bar
 
 /*------------GOOGLE MAP------------*/
 var map, 
@@ -171,6 +170,5 @@ var ViewModel = function(){
     }, self);  
 
 };
-
 //Run the app
 ko.applyBindings(new ViewModel());
