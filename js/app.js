@@ -28,15 +28,30 @@ var initialPlaces = [
 var map, 
     markers = [],
     infowindow,
-    state = false;
+    state = false,
+    iconBase = "img/marker.svg";
 
 var initMap = function() {
-    var LatLong = new google.maps.LatLng(51.499840, -0.124663);
+    var LatLong = new google.maps.LatLng(51.50500, -0.134663);
     map = new google.maps.Map(document.getElementById('map'), {
         zoom: 13,
         center: LatLong,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
+        disableDefaultUI: true
     });
+    //Disable the extra poi's on google
+    var mapPoi = [{
+        featureType: "poi",
+        stylers: [{
+          visibility: "off"
+        }]
+    },{
+      featureType: "transit",
+      stylers: [
+        { visibility: "off" }
+      ]
+    }];
+
+    map.setOptions({styles: mapPoi});
 
     infowindow = new google.maps.InfoWindow();
 
@@ -46,7 +61,8 @@ var initMap = function() {
               position: new google.maps.LatLng(initialPlaces[i].position),
               map: map,
               title: initialPlaces[i].name,
-              animation: google.maps.Animation.DROP
+              animation: google.maps.Animation.DROP,
+              icon: iconBase
           });
           google.maps.event.addListener(newMarker, 'click', (function (newMarker, i) {
               return function () {
@@ -70,13 +86,15 @@ var initMap = function() {
     });
 };
 
-//Google bounce and infoWindow function
+//InfoWindow function
 var openWindow = function(data, places){
   var url = 'http://api.flickr.com/services/feeds/photos_public.gne?tags=' + places + '&tagmode=any&format=json&jsoncallback=?';
   var imgData;
+  var link;
 
   $.getJSON(url, function(json) {
     $(json.items).each(function(i, item) {
+      link = item.media.m;
       imgData = '<div><img src="' + item.media.m + '" alt="Image Source" /></div>';
         if (i == 0) return false
     });
@@ -92,8 +110,9 @@ var openWindow = function(data, places){
     //Then set a timer to stop the marker bouncing after 750ms (1 bounce)
     setTimeout(function(){data.setAnimation(null);}, 750)
   }
+
   function flickr(){
-    infowindow.setContent('<div id="infoWindow"><h4>'+ places + '</h4>' + imgData + '</div>');
+    infowindow.setContent('<div id="infoWindow"><h4>'+ places + '</h4>' + imgData + '<a href="'+ link + '" target="_blank">source: \'Flickr images\'</p></div>');
   }
 };
 
