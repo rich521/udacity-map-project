@@ -225,21 +225,16 @@ var ViewModel = function() {
 };
 
 var nav = true;
-
 function openNav() {
     if (nav) {
         document.getElementById("mySidenav").style.width = "275px";
-        document.getElementById("main").style.marginLeft = "275px";
+        document.getElementById("nav-button").style.marginLeft = "275px";
         nav = false;
     } else {
         document.getElementById("mySidenav").style.width = "0";
-        document.getElementById("main").style.marginLeft = "0";
+        document.getElementById("nav-button").style.marginLeft = "0";
         nav = true;
     }
-    //Wait after transition has ended, then refresh google map to rid grey area bug
-    setTimeout(function() {
-        google.maps.event.trigger(map, 'resize');
-    }, 350);
 }
 //Run the app
 ko.applyBindings(new ViewModel());
