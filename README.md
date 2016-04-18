@@ -17,3 +17,6 @@
 
 All images are sourced from [Flickr.com](https://www.flickr.com).
 
+##### Minified Code
+
+Open non-minified version for readable code. Note that, index.html run on the minified versions.
