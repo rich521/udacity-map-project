@@ -5,8 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Neighborhood Map Project</title>
-    <link href='https://fonts.googleapis.com/css?family=Quicksand:300' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="css/style.css">
+	<style>
+	html,body{height:100%;margin:0;padding:0;font-family:'Quicksand',sans-serif}#main{transition:margin-left .5s;height:100%}#nav-button{padding:2rem}#ham-burg{position:absolute;width:4rem;height:4rem;z-index:1;text-align:center;cursor:pointer;font-size:2rem;line-height:4rem;border-radius:100%;color:white;background-color:rgba(53,61,69,0.85);-webkit-box-shadow:1px 1px 10px 1px rgba(0,0,0,0.3);-moz-box-shadow:1px 1px 10px 1px rgba(0,0,0,0.3);box-shadow:1px 1px 10px 1px rgba(0,0,0,0.3)}#ham-burg:hover{color:#424242;background-color:white}
+	</style>
 </head>
 <body>
 	<!--Navivation slider -->
@@ -22,39 +23,19 @@
 				<li data-bind="text: name, click: $parent.clickPlace"></li>
 			</ul>
 		</div>
-
 	</div>
-
 	<div id="main">
 		<div id="nav-button" style="cursor:pointer" onclick="openNav()">
 			<span id="ham-burg">☰</span>
 		</div>
 		<div id="map"></div>
 	</div>
-	
-	<!--inlined the nav slider code-->
-	<script>
-	var nav = true;
-		function openNav() {
-			if(nav){
-				document.getElementById("mySidenav").style.width = "275px";
-				document.getElementById("main").style.marginLeft = "275px";
-				nav = false;
-			}else{
-				document.getElementById("mySidenav").style.width = "0";
-		    	document.getElementById("main").style.marginLeft= "0";
-		    	nav = true;
-			}
-			//Wait after transition has ended, then refresh google map to rid grey area bug
-			setTimeout(function() {
-				google.maps.event.trigger(map, 'resize');
-			}, 350);
-		}
-	</script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCq0E_YjDqMAaFaaLZ67OEIAvadmWaPKa8&callback=initMap" async defer></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-    <script src="js/app.js"></script>
+	<link href='https://fonts.googleapis.com/css?family=Quicksand:300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/style.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js" defer></script>
+	<script src="js/app.min.js" defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCq0E_YjDqMAaFaaLZ67OEIAvadmWaPKa8&callback=initMap" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js" defer></script>
 </body>
 </html>
 
