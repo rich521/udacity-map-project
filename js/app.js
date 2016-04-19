@@ -169,7 +169,8 @@ var ViewModel = function() {
     var self = this,
         places = ko.observableArray(initialPlaces),
         location = places(),
-        nameArray = [];
+        nameArray = [],
+        nav = true;
 
     //Create an observableArray, each with new Place object
     this.placeList = ko.observableArray([]);
@@ -177,6 +178,18 @@ var ViewModel = function() {
         self.placeList.push(new Place(placeItem));
         nameArray.push(placeItem.name);
     });
+
+    //Create click nav slider functionality
+    this.openSlider = ko.observable(1);
+    this.clickNav = function(){
+        if (nav) {
+            this.openSlider(-1);
+            nav = false;
+        }else {
+            this.openSlider(1);
+            nav = true;
+        }
+    };
 
     //store our place to a new current place variable
     this.currentPlace = ko.observable(this.placeList()[0]);
@@ -225,22 +238,12 @@ var ViewModel = function() {
 
 };
 
-var nav = true;
-
-function openNav() {
-    if (nav) {
-        document.getElementById("mySidenav").style.width = "275px";
-        document.getElementById("nav-button").style.marginLeft = "275px";
-        nav = false;
-    } else {
-        document.getElementById("mySidenav").style.width = "0";
-        document.getElementById("nav-button").style.marginLeft = "0";
-        nav = true;
-    }
-}
-
 function googleError(){
     $("#map").addClass("google").text("Google map failed to load");;
 }
+
 //Run the app
 ko.applyBindings(new ViewModel());
+
+
+

@@ -10,7 +10,7 @@
 	</style>
 </head>
 <body>
-	<div id="mySidenav" class="sidenav">
+	<div id="mySidenav" class="sidenav" data-bind="style: { width: openSlider() < 0 ? '275px' : '0px' }">
 	  	<div class="box">
 			<div class="container-1">
 				<h3>London, UK</h3>
@@ -23,15 +23,15 @@
 		</div>
 	</div>
 	<div id="main">
-		<div id="nav-button" style="cursor:pointer" onclick="openNav()">
+		<div id="nav-button" style="cursor:pointer" data-bind="click: clickNav, style: { marginLeft: openSlider() < 0 ? '275px' : '0px' }">
 			<span id="ham-burg">☰</span>
 		</div>
 		<div id="map"></div>
 	</div>
 	<link href='https://fonts.googleapis.com/css?family=Quicksand:300' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.min.css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js" defer></script>
-	<script src="js/app.js" defer></script>
+	<script src="js/app.min.js" defer></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js" defer></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCq0E_YjDqMAaFaaLZ67OEIAvadmWaPKa8&callback=initMap" defer onerror="googleError()"></script>
 </body>
