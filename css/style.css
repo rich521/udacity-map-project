@@ -1,107 +1,122 @@
-/* The side navigation menu */
 #map {
-    margin-top: -4rem;
-    height: 100%;
+  margin-top: -4rem;
+  height: 100%;
 }
-/*GIF*/
+.google {
+  position: fixed;
+  top: 50%;
+  right: 40%;
+  font-size: 30px;
+}
+
 #loading {
-    background: url(../img/ajax-loader.gif) no-repeat;
-    width: 50px;
-    height: 50px;
-    margin-left: 100px;
-    margin-top: 20px;
-    background-size: contain;
+  background: url(../img/ajax-loader.gif) no-repeat;
+  background-size: contain;
 }
+
+.loading {
+  width: 50px;
+  height: 50px;
+  margin-left: 100px;
+  margin-top: 20px;
+}
+
 #infoWindow {
-    font: 25px 'Quicksand';
-    width: 270px !important;
-    margin-left: 20px;
-    overflow: hidden !important;
-    text-align: center;
+  font: 25px "Quicksand";
+  width: 270px!important;
+  margin-left: 20px;
+  overflow: hidden!important;
+  text-align: center;
 }
-#infoWindow a {
-    font-size: 14px;
-    text-decoration: none;
-    color: grey;
+
+.infoLink {
+  font-size: 14px;
+  text-decoration: none;
+  color: grey;
 }
-#infoWindow img {
-    margin-left: 10px;
-    width: 210px;
-    padding: 5px;
-    border: 1px solid grey;
-    border-radius: 5px;
-    -webkit-filter: grayscale(100%);
-    filter: grayscale(100%);
+
+.flickr {
+  margin-left: 10px;
+  width: 210px;
+  border: 1px solid grey;
+  border-radius: 5px;
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+  padding: 5px;
 }
+
 .container-1 {
-    vertical-align: middle;
-    white-space: nowrap;
-    position: relative;
+  vertical-align: middle;
+  white-space: nowrap;
+  position: relative;
 }
-.container-1 h3 {
-    color: white;
-    font-size: 25px;
-    padding-left: 25px;
+
+h3 {
+  color: #FFF;
+  font-size: 25px;
+  padding-left: 25px;
 }
+
 .container-1 input#search {
-    margin-left: 0px;
-    width: 250px;
-    height: 40px;
-    background: #2b303b;
-    border: none;
-    font: 12pt 'Quicksand';
-    float: left;
-    color: #63717f;
-    padding-left: 25px;
+  margin-left: 0;
+  width: 250px;
+  height: 40px;
+  background: #2b303b;
+  border: none;
+  font: 12pt "Quicksand";
+  float: left;
+  color: #63717f;
+  padding-left: 25px;
 }
+
 input:focus {
-    outline: none;
+  outline: none;
 }
+
 .sidenav {
-    height: 100%;
-    width: 0;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #353d45;    
-    overflow-x: hidden;
-    padding-top: 60px;
-    transition: 0.5s;
-    /* 0.5 second transition effect to slide in the sidenav */
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #353d45;
+  overflow-x: hidden;
+  padding-top: 60px;
+  transition: .5s;
 }
-/* The navigation menu links */
+
 .place-list {
-    margin: 80px 25px 0px -15px;
+  margin: 80px 25px 0 -15px;
 }
+
 .sidenav li {
-    list-style-type: none;
-    padding: 12px 0px 12px 0px;
-    text-decoration: none;
-    font-size: 18px;
-    color: #818181;
-    transition: 0.3s
+  list-style-type: none;
+  text-decoration: none;
+  font-size: 18px;
+  color: #818181;
+  transition: .3s;
+  padding: 12px 0;
 }
-/* When you mouse over the navigation links, change their color */
-.sidenav a:hover,
-.offcanvas a:focus,
-li:hover,
-.offcanvas li:focus {
-    color: #f1f1f1;
+
+.sidenav a:hover,.offcanvas a:focus,li:hover,.offcanvas li:focus {
+  color: #f1f1f1;
 }
-/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
-@media screen and (max-width: 350px) {
-    .sidenav li {
-        font-size: 16px;
-    }
-    #nav-button {
-        padding: 1.5rem;
-    }
-    #ham-burg {
-        left: 1.5rem;
-        width: 3rem;
-        height: 3rem;
-        font-size: 1.5rem;
-        line-height: 3rem;
-    }
+
+@media screen and (max-width:350px) {
+  .sidenav li {
+    font-size: 16px;
+  }
+
+  #nav-button {
+    padding: 1.5rem;
+  }
+
+  #ham-burg {
+    left: 1.5rem;
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.5rem;
+    line-height: 3rem;
+  }
 }

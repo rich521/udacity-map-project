@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>London Map Places</title>
 	<style>
-	html,body{height: 100%;margin: 0;padding: 0;font-family: 'Quicksand', sans-serif}#main{height: 100%;}#nav-button{transition: margin-left .5s;padding: 2rem;}#ham-burg{position: absolute;width: 4rem;height: 4rem;z-index: 1;text-align: center;cursor: pointer;font-size: 2rem;line-height: 4rem;border-radius: 100%;color: white;background-color: rgba(53, 61, 69, 0.85);-webkit-box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.3);-moz-box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.3);box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.3)}#ham-burg:hover:active{color: #424242;background-color: white}
+	html,body{height: 100%;margin: 0;padding: 0;font-family: "Quicksand", sans-serif}#main{height: 100%;}#nav-button{transition: margin-left .5s;padding: 2rem;}#ham-burg{position: absolute;width: 4rem;height: 4rem;z-index: 1;text-align: center;cursor: pointer;font-size: 2rem;line-height: 4rem;border-radius: 100%;color: white;background-color: rgba(53, 61, 69, 0.85);-webkit-box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.3);-moz-box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.3);box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.3)}#ham-burg:hover:active{color: #424242;background-color: white}
 	</style>
 </head>
 <body>
@@ -29,11 +29,11 @@
 		<div id="map"></div>
 	</div>
 	<link href='https://fonts.googleapis.com/css?family=Quicksand:300' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="css/style.min.css">
+    <link rel="stylesheet" href="css/style.css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js" defer></script>
-	<script src="js/app.min.js" defer></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCq0E_YjDqMAaFaaLZ67OEIAvadmWaPKa8&callback=initMap" defer></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js" defer></script>
+	<script src="js/app.js" defer></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js" defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCq0E_YjDqMAaFaaLZ67OEIAvadmWaPKa8&callback=initMap" defer onerror="googleError()"></script>
 </body>
 </html>
 

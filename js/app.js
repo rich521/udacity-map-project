@@ -1,4 +1,5 @@
 //Hard coded data for marker pin example.
+'use strict';
 var initialPlaces = [
   {
     name: 'Big Ben',
@@ -98,7 +99,7 @@ var initMap = function() {
             state = true;
         }
     }
-    //Recenter the map when resizing to Latlong 
+    //Recenter the map when resizing to Latlong
     google.maps.event.addDomListenerOnce(map, 'idle', function() {
         google.maps.event.addDomListener(window, 'resize', function() {
             map.setCenter(LatLong);
@@ -123,7 +124,7 @@ var openWindow = function(data, places) {
         // jsonp: "callback",  --> by default. if needed to be changed
         success: function(response) {
             link = response.items[0].media.m;
-            imgData = '<div><img src="' + link + '" alt="Image Source" /></div>';
+            imgData = '<div><img class="flickr" src="' + link + '" alt="Image Source" /></div>';
             flickr();
             clearTimeout(flickrRequestTimeout);
         }
@@ -132,7 +133,7 @@ var openWindow = function(data, places) {
     infoWindow();
 
     function infoWindow() {
-        infowindow.setContent('<div id="infoWindow"><h4>' + places + '</h4>' + '<div id="loading"></div></div>');
+        infowindow.setContent('<div id="infoWindow"><h4>' + places + '</h4>' + '<div id="loading" class="loading"></div></div>');
         infowindow.open(map, data);
         //Bounce the marker
         data.setAnimation(google.maps.Animation.BOUNCE);
@@ -143,7 +144,7 @@ var openWindow = function(data, places) {
     }
 
     function flickr() {
-        infowindow.setContent('<div id="infoWindow"><h4>' + places + '</h4>' + imgData + '<a href="' + link + '" target="_blank">source: \'Flickr images\'</p></div>');
+        infowindow.setContent('<div id="infoWindow"><h4>' + places + '</h4>' + imgData + '<a class="infoLink" href="' + link + '" target="_blank">source: \'Flickr images\'</p></div>');
     }
 };
 
@@ -225,6 +226,7 @@ var ViewModel = function() {
 };
 
 var nav = true;
+
 function openNav() {
     if (nav) {
         document.getElementById("mySidenav").style.width = "275px";
@@ -235,6 +237,10 @@ function openNav() {
         document.getElementById("nav-button").style.marginLeft = "0";
         nav = true;
     }
+}
+
+function googleError(){
+    $("#map").addClass("google").text("Google map failed to load");;
 }
 //Run the app
 ko.applyBindings(new ViewModel());
