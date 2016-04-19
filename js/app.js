@@ -235,7 +235,6 @@ var ViewModel = function() {
         }
         return filteredCollection;
     }, self);
-
 };
 
 function googleError(){
