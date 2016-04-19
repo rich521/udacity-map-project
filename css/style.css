@@ -24,7 +24,7 @@
 
 #infoWindow {
   font: 25px "Quicksand";
-  width: 270px!important;
+  width: 270px;
   margin-left: 20px;
   overflow: hidden!important;
   text-align: center;
@@ -84,7 +84,7 @@ input:focus {
   background-color: #353d45;
   overflow-x: hidden;
   padding-top: 60px;
-  transition: .5s;
+  transition: 0.5s;
 }
 
 .place-list {
@@ -96,11 +96,14 @@ input:focus {
   text-decoration: none;
   font-size: 18px;
   color: #818181;
-  transition: .3s;
+  transition: 0.3s;
   padding: 12px 0;
 }
 
-.sidenav a:hover,.offcanvas a:focus,li:hover,.offcanvas li:focus {
+.sidenav a:hover,
+.offcanvas a:focus,
+li:hover,
+.offcanvas li:focus {
   color: #f1f1f1;
 }
 

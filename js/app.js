@@ -173,20 +173,20 @@ var ViewModel = function() {
         nav = true;
 
     //Create an observableArray, each with new Place object
-    this.placeList = ko.observableArray([]);
+    self.placeList = ko.observableArray();
     initialPlaces.forEach(function(placeItem) {
         self.placeList.push(new Place(placeItem));
         nameArray.push(placeItem.name);
     });
 
     //Create click nav slider functionality
-    this.openSlider = ko.observable(1);
-    this.clickNav = function(){
+    self.openSlider = ko.observable(1);
+    self.clickNav = function(){
         if (nav) {
-            this.openSlider(-1);
+            self.openSlider(-1);
             nav = false;
         }else {
-            this.openSlider(1);
+            self.openSlider(1);
             nav = true;
         }
     };
@@ -195,7 +195,7 @@ var ViewModel = function() {
     this.currentPlace = ko.observable(this.placeList()[0]);
 
     //click to set the selected place
-    this.clickPlace = function(clickedPlace) {
+    self.clickPlace = function(clickedPlace) {
         self.currentPlace(clickedPlace);
         openWindow(markers[nameArray.indexOf(clickedPlace.name)], clickedPlace.name);
     };
@@ -243,6 +243,3 @@ function googleError(){
 
 //Run the app
 ko.applyBindings(new ViewModel());
-
-
-
